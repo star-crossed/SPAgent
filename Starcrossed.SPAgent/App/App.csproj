@@ -47,6 +47,10 @@
     <None Include="clippy.js-master\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{a79f27ef-12ee-4f07-adf7-cc97d8150fa3}</SharePointProjectItemId>
     </None>
+    <None Include="Core.JavaScriptInjectionJSOM\LICENSE.md" />
+    <None Include="Core.JavaScriptInjectionJSOM\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{3dcd142b-24fe-41f2-8b56-ad210c32f850}</SharePointProjectItemId>
+    </None>
     <None Include="packages.config" />
     <None Include="Pages\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{80a7d448-d416-4d58-8dc2-0f44666375fd}</SharePointProjectItemId>
@@ -104,6 +108,7 @@
     <Content Include="clippy.js-master\src\images\tip.png" />
     <Content Include="clippy.js-master\src\load.js" />
     <Content Include="clippy.js-master\src\queue.js" />
+    <Content Include="Core.JavaScriptInjectionJSOM\Elements.xml" />
     <Content Include="Pages\Elements.xml" />
     <Content Include="Pages\Default.aspx" />
   </ItemGroup>
@@ -112,6 +117,7 @@
     <None Include="Scripts\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{2b707445-8a8e-4167-b58f-d860c5a6c406}</SharePointProjectItemId>
     </None>
+    <Content Include="Core.JavaScriptInjectionJSOM\Core.JavaScriptInjectionJSOM.js" />
     <Content Include="Scripts\Elements.xml" />
     <Content Include="Scripts\App.js" />
     <Content Include="Scripts\jquery-1.9.1.intellisense.js" />
