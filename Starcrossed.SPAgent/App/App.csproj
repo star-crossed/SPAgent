@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9E5FA951-7CB5-4DB4-919C-F162DC7DE18D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>App</RootNamespace>
+    <AssemblyName>App</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetOfficeVersion>16.0</TargetOfficeVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <MinimumOfficeToolsVersion>12.1</MinimumOfficeToolsVersion>
+    <IncludeAssemblyInPackage>False</IncludeAssemblyInPackage>
+    <ProjectMode>SharePointApp</ProjectMode>
+    <AppFeaturePartId>{3f51717f-b2bd-4bb9-bf10-4cc8a1fae887}</AppFeaturePartId>
+    <WspPartId>{c44a4f41-567f-4d24-a0cd-ab8de1d101fb}</WspPartId>
+    <WorkflowPartId>{c93a1897-8768-4c42-b30c-ecf4cbc692f5}</WorkflowPartId>
+    <CspkgPartId>{af22c2e4-a3de-4f3d-b2cf-1a72391aebf7}</CspkgPartId>
+    <SqlPackagePartId>{2b707445-8a8e-4167-b58f-d860c5a6c406}</SqlPackagePartId>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="clippy.js-master\README.md" />
+    <None Include="clippy.js-master\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a79f27ef-12ee-4f07-adf7-cc97d8150fa3}</SharePointProjectItemId>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Pages\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{80a7d448-d416-4d58-8dc2-0f44666375fd}</SharePointProjectItemId>
+    </None>
+    <Content Include="clippy.js-master\agents\Bonzi\agent.js" />
+    <Content Include="clippy.js-master\agents\Bonzi\map.png" />
+    <Content Include="clippy.js-master\agents\Bonzi\sounds-mp3.js" />
+    <Content Include="clippy.js-master\agents\Bonzi\sounds-ogg.js" />
+    <Content Include="clippy.js-master\agents\Clippy\agent.js" />
+    <Content Include="clippy.js-master\agents\Clippy\map.png" />
+    <Content Include="clippy.js-master\agents\Clippy\sounds-mp3.js" />
+    <Content Include="clippy.js-master\agents\Clippy\sounds-ogg.js" />
+    <Content Include="clippy.js-master\agents\F1\agent.js" />
+    <Content Include="clippy.js-master\agents\F1\map.png" />
+    <Content Include="clippy.js-master\agents\F1\sounds-mp3.js" />
+    <Content Include="clippy.js-master\agents\F1\sounds-ogg.js" />
+    <Content Include="clippy.js-master\agents\Genie\agent.js" />
+    <Content Include="clippy.js-master\agents\Genie\map.png" />
+    <Content Include="clippy.js-master\agents\Genie\sounds-mp3.js" />
+    <Content Include="clippy.js-master\agents\Genie\sounds-ogg.js" />
+    <Content Include="clippy.js-master\agents\Genius\agent.js" />
+    <Content Include="clippy.js-master\agents\Genius\map.png" />
+    <Content Include="clippy.js-master\agents\Genius\sounds-mp3.js" />
+    <Content Include="clippy.js-master\agents\Genius\sounds-ogg.js" />
+    <Content Include="clippy.js-master\agents\Links\agent.js" />
+    <Content Include="clippy.js-master\agents\Links\map.png" />
+    <Content Include="clippy.js-master\agents\Links\sounds-mp3.js" />
+    <Content Include="clippy.js-master\agents\Links\sounds-ogg.js" />
+    <Content Include="clippy.js-master\agents\Merlin\agent.js" />
+    <Content Include="clippy.js-master\agents\Merlin\map.png" />
+    <Content Include="clippy.js-master\agents\Merlin\sounds-mp3.js" />
+    <Content Include="clippy.js-master\agents\Merlin\sounds-ogg.js" />
+    <Content Include="clippy.js-master\agents\Peedy\agent.js" />
+    <Content Include="clippy.js-master\agents\Peedy\map.png" />
+    <Content Include="clippy.js-master\agents\Peedy\sounds-mp3.js" />
+    <Content Include="clippy.js-master\agents\Peedy\sounds-ogg.js" />
+    <Content Include="clippy.js-master\agents\Rocky\agent.js" />
+    <Content Include="clippy.js-master\agents\Rocky\map.png" />
+    <Content Include="clippy.js-master\agents\Rocky\sounds-mp3.js" />
+    <Content Include="clippy.js-master\agents\Rocky\sounds-ogg.js" />
+    <Content Include="clippy.js-master\agents\Rover\agent.js" />
+    <Content Include="clippy.js-master\agents\Rover\map.png" />
+    <Content Include="clippy.js-master\agents\Rover\sounds-mp3.js" />
+    <Content Include="clippy.js-master\agents\Rover\sounds-ogg.js" />
+    <Content Include="clippy.js-master\build\clippy.css" />
+    <Content Include="clippy.js-master\build\clippy.js" />
+    <Content Include="clippy.js-master\build\clippy.min.js" />
+    <Content Include="clippy.js-master\Elements.xml" />
+    <Content Include="clippy.js-master\MIT-LICENSE.txt" />
+    <Content Include="clippy.js-master\src\agent.js" />
+    <Content Include="clippy.js-master\src\animator.js" />
+    <Content Include="clippy.js-master\src\balloon.js" />
+    <Content Include="clippy.js-master\src\clippy.css" />
+    <Content Include="clippy.js-master\src\images\border.png" />
+    <Content Include="clippy.js-master\src\images\tip.png" />
+    <Content Include="clippy.js-master\src\load.js" />
+    <Content Include="clippy.js-master\src\queue.js" />
+    <Content Include="Pages\Elements.xml" />
+    <Content Include="Pages\Default.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\jquery-1.9.1.min.map" />
+    <None Include="Scripts\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{2b707445-8a8e-4167-b58f-d860c5a6c406}</SharePointProjectItemId>
+    </None>
+    <Content Include="Scripts\Elements.xml" />
+    <Content Include="Scripts\App.js" />
+    <Content Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\_references.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{7008f612-5a6f-457e-9d74-bcbbba97a5a2}</SharePointProjectItemId>
+    </None>
+    <Content Include="Content\Elements.xml" />
+    <Content Include="Content\App.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\AppIcon.png">
+      <OpcRelationship>manifest-icon</OpcRelationship>
+    </Content>
+    <Content Include="Images\Elements.xml" />
+    <None Include="Images\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{dde7a6af-be0d-4ec5-9538-df86cd60d563}</SharePointProjectItemId>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Package\Package.package">
+      <PackageId>{be47fef4-4ce3-4c7b-87b8-393017561e62}</PackageId>
+    </None>
+    <None Include="Package\Package.Template.xml">
+      <DependentUpon>Package.package</DependentUpon>
+    </None>
+    <None Include="Features\Feature1\Feature1.feature">
+      <FeatureId>{5a8e8c3d-31f8-454b-a17a-ce1ff5361c4f}</FeatureId>
+    </None>
+    <None Include="Features\Feature1\Feature1.Template.xml">
+      <DependentUpon>Feature1.feature</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <AppManifestFile Include="AppManifest.xml">
+      <SubType>Designer</SubType>
+    </AppManifestFile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
+</Project>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="clippy.js-master">
+    <File Path="clippy.js-master\agents\Bonzi\agent.js" Url="clippy.js-master/agents/Bonzi/agent.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Bonzi\map.png" Url="clippy.js-master/agents/Bonzi/map.png" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Bonzi\sounds-mp3.js" Url="clippy.js-master/agents/Bonzi/sounds-mp3.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Bonzi\sounds-ogg.js" Url="clippy.js-master/agents/Bonzi/sounds-ogg.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Clippy\agent.js" Url="clippy.js-master/agents/Clippy/agent.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Clippy\map.png" Url="clippy.js-master/agents/Clippy/map.png" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Clippy\sounds-mp3.js" Url="clippy.js-master/agents/Clippy/sounds-mp3.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Clippy\sounds-ogg.js" Url="clippy.js-master/agents/Clippy/sounds-ogg.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\F1\agent.js" Url="clippy.js-master/agents/F1/agent.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\F1\map.png" Url="clippy.js-master/agents/F1/map.png" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\F1\sounds-mp3.js" Url="clippy.js-master/agents/F1/sounds-mp3.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\F1\sounds-ogg.js" Url="clippy.js-master/agents/F1/sounds-ogg.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Genie\agent.js" Url="clippy.js-master/agents/Genie/agent.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Genie\map.png" Url="clippy.js-master/agents/Genie/map.png" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Genie\sounds-mp3.js" Url="clippy.js-master/agents/Genie/sounds-mp3.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Genie\sounds-ogg.js" Url="clippy.js-master/agents/Genie/sounds-ogg.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Genius\agent.js" Url="clippy.js-master/agents/Genius/agent.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Genius\map.png" Url="clippy.js-master/agents/Genius/map.png" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Genius\sounds-mp3.js" Url="clippy.js-master/agents/Genius/sounds-mp3.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Genius\sounds-ogg.js" Url="clippy.js-master/agents/Genius/sounds-ogg.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Links\agent.js" Url="clippy.js-master/agents/Links/agent.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Links\map.png" Url="clippy.js-master/agents/Links/map.png" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Links\sounds-mp3.js" Url="clippy.js-master/agents/Links/sounds-mp3.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Links\sounds-ogg.js" Url="clippy.js-master/agents/Links/sounds-ogg.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Merlin\agent.js" Url="clippy.js-master/agents/Merlin/agent.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Merlin\map.png" Url="clippy.js-master/agents/Merlin/map.png" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Merlin\sounds-mp3.js" Url="clippy.js-master/agents/Merlin/sounds-mp3.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Merlin\sounds-ogg.js" Url="clippy.js-master/agents/Merlin/sounds-ogg.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Peedy\agent.js" Url="clippy.js-master/agents/Peedy/agent.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Peedy\map.png" Url="clippy.js-master/agents/Peedy/map.png" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Peedy\sounds-mp3.js" Url="clippy.js-master/agents/Peedy/sounds-mp3.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Peedy\sounds-ogg.js" Url="clippy.js-master/agents/Peedy/sounds-ogg.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Rocky\agent.js" Url="clippy.js-master/agents/Rocky/agent.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Rocky\map.png" Url="clippy.js-master/agents/Rocky/map.png" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Rocky\sounds-mp3.js" Url="clippy.js-master/agents/Rocky/sounds-mp3.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Rocky\sounds-ogg.js" Url="clippy.js-master/agents/Rocky/sounds-ogg.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Rover\agent.js" Url="clippy.js-master/agents/Rover/agent.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Rover\map.png" Url="clippy.js-master/agents/Rover/map.png" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Rover\sounds-mp3.js" Url="clippy.js-master/agents/Rover/sounds-mp3.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\agents\Rover\sounds-ogg.js" Url="clippy.js-master/agents/Rover/sounds-ogg.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\build\clippy.css" Url="clippy.js-master/build/clippy.css" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\build\clippy.js" Url="clippy.js-master/build/clippy.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\build\clippy.min.js" Url="clippy.js-master/build/clippy.min.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\src\agent.js" Url="clippy.js-master/src/agent.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\src\animator.js" Url="clippy.js-master/src/animator.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\src\balloon.js" Url="clippy.js-master/src/balloon.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\src\clippy.css" Url="clippy.js-master/src/clippy.css" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\src\load.js" Url="clippy.js-master/src/load.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\src\queue.js" Url="clippy.js-master/src/queue.js" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\src\images\border.png" Url="clippy.js-master/src/images/border.png" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\src\images\tip.png" Url="clippy.js-master/src/images/tip.png" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\MIT-LICENSE.txt" Url="clippy.js-master/MIT-LICENSE.txt" ReplaceContent="TRUE" />
+    <File Path="clippy.js-master\README.md" Url="clippy.js-master/README.md" ReplaceContent="TRUE" />
+  </Module>
+</Elements>
