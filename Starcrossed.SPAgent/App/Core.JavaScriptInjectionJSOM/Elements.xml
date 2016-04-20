@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
-  <Module Name="Core.JavaScriptInjectionJSOM">
-    <File Path="Core.JavaScriptInjectionJSOM\Core.JavaScriptInjectionJSOM.js" Url="Core.JavaScriptInjectionJSOM/Core.JavaScriptInjectionJSOM.js" ReplaceContent="TRUE" />
-    <File Path="Core.JavaScriptInjectionJSOM\License.MD" Url="Core.JavaScriptInjectionJSOM/License.MD" ReplaceContent="TRUE" />
-  </Module>
-</Elements>

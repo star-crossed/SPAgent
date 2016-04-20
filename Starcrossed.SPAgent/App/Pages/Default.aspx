@@ -8,7 +8,7 @@
 
 <%-- The markup and script in the following Content element will be placed in the <head> of the page --%>
 <asp:Content ContentPlaceHolderID="PlaceHolderAdditionalPageHead" runat="server">
-    <script type="text/javascript" src="../Scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.runtime.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.js"></script>
     <meta name="WebPartPageExpansion" content="full" />
@@ -22,7 +22,7 @@
 
 <%-- The markup in the following Content element will be placed in the TitleArea of the page --%>
 <asp:Content ContentPlaceHolderID="PlaceHolderPageTitleInTitleArea" runat="server">
-    Page Title
+    SPAgent
 </asp:Content>
 
 <%-- The markup and script in the following Content element will be placed in the <body> of the page --%>
@@ -30,9 +30,16 @@
 
     <div>
         <p id="message">
-            <!-- The following content will be replaced with the user name when you run the app - see App.js -->
-            initializing...
+            
         </p>
+        <p>Usage:
+            <ul>
+                <li><em>Embed:</em> uploads a JavaScript file and adds a custom action to the host web </li>
+                <li><em>Remove:</em> removes the custom action and deletes the JavaScript file from the host web</li>
+            </ul>
+        </p>
+        <input type="button" value="Embed" id="btnEmbed" />
+        <input type="button" value="Remove" id="btnRemove" />
     </div>
 
 </asp:Content>

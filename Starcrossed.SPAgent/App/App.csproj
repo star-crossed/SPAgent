@@ -10,11 +10,11 @@
     <RootNamespace>App</RootNamespace>
     <AssemblyName>App</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <TargetOfficeVersion>16.0</TargetOfficeVersion>
+    <TargetOfficeVersion>16.1</TargetOfficeVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
-    <MinimumOfficeToolsVersion>12.1</MinimumOfficeToolsVersion>
+    <MinimumOfficeToolsVersion>12.2</MinimumOfficeToolsVersion>
     <IncludeAssemblyInPackage>False</IncludeAssemblyInPackage>
     <ProjectMode>SharePointApp</ProjectMode>
     <AppFeaturePartId>{3f51717f-b2bd-4bb9-bf10-4cc8a1fae887}</AppFeaturePartId>
@@ -22,6 +22,26 @@
     <WorkflowPartId>{c93a1897-8768-4c42-b30c-ecf4cbc692f5}</WorkflowPartId>
     <CspkgPartId>{af22c2e4-a3de-4f3d-b2cf-1a72391aebf7}</CspkgPartId>
     <SqlPackagePartId>{2b707445-8a8e-4167-b58f-d860c5a6c406}</SqlPackagePartId>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>12.0</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,11 +67,6 @@
     <None Include="clippy.js-master\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{a79f27ef-12ee-4f07-adf7-cc97d8150fa3}</SharePointProjectItemId>
     </None>
-    <None Include="Core.JavaScriptInjectionJSOM\LICENSE.md" />
-    <None Include="Core.JavaScriptInjectionJSOM\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{3dcd142b-24fe-41f2-8b56-ad210c32f850}</SharePointProjectItemId>
-    </None>
-    <None Include="packages.config" />
     <None Include="Pages\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{80a7d448-d416-4d58-8dc2-0f44666375fd}</SharePointProjectItemId>
     </None>
@@ -108,21 +123,16 @@
     <Content Include="clippy.js-master\src\images\tip.png" />
     <Content Include="clippy.js-master\src\load.js" />
     <Content Include="clippy.js-master\src\queue.js" />
-    <Content Include="Core.JavaScriptInjectionJSOM\Elements.xml" />
+    <Content Include="Content\SPAgent.js" />
     <Content Include="Pages\Elements.xml" />
     <Content Include="Pages\Default.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Scripts\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{2b707445-8a8e-4167-b58f-d860c5a6c406}</SharePointProjectItemId>
     </None>
-    <Content Include="Core.JavaScriptInjectionJSOM\Core.JavaScriptInjectionJSOM.js" />
     <Content Include="Scripts\Elements.xml" />
     <Content Include="Scripts\App.js" />
-    <Content Include="Scripts\jquery-1.9.1.intellisense.js" />
-    <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\_references.js" />
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +169,18 @@
     <AppManifestFile Include="AppManifest.xml">
       <SubType>Designer</SubType>
     </AppManifestFile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
