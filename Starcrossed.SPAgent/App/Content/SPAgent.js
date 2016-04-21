@@ -1,32 +1,32 @@
 ﻿var jQueryScriptOutputted = false;
 function initJQuery() {
-
-    //if the jQuery object isn't available
     if (typeof (jQuery) == 'undefined') {
-
-
         if (!jQueryScriptOutputted) {
-            //only output the script once..
             jQueryScriptOutputted = true;
-
-            //output the script (load it from google api)
-            document.write("<scr" + "ipt type=\"text/javascript\" src=\"//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js\"></scr" + "ipt>");
+            var headID = document.getElementsByTagName("head")[0];
+            var jqueryScript = document.createElement("script");
+            jqueryScript.type = "text/javascript";
+            jqueryScript.src = "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js";
+            headID.appendChild(jqueryScript);
         }
         setTimeout("initJQuery()", 50);
     } else {
+        var headID = document.getElementsByTagName("head")[0];
+        var clippyCss = document.createElement("link");
+        clippyCss.rel = "stylesheet";
+        clippyCss.type = "text/css";
+        clippyCss.href = "/SPAgent/clippy.js-master/build/clippy.css";
+        clippyCss.media = "all";
+        headID.appendChild(clippyCss);
 
-        $(function () {
-            //do anything that needs to be done on document.ready
-            document.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"clippy.css\" media=\"all\">");
-
+        SP.SOD.registerSod('clippy.js', '/SPAgent/clippy.js-master/build/clippy.min.js');
+        LoadSodByKey("clippy.js", function () {
             clippy.load('Rocky', function (agent) {
-                // do anything with the loaded agent
                 clippy.myAgent = agent;
                 clippy.myAgent.show();
             });
         });
     }
-
 }
 
 initJQuery();
