@@ -1,4 +1,5 @@
 ﻿var jQueryScriptOutputted = false;
+var clippyScriptOutputted = false;
 function initJQuery() {
     if (typeof (jQuery) == 'undefined') {
         if (!jQueryScriptOutputted) {
@@ -11,20 +12,33 @@ function initJQuery() {
         }
         setTimeout("initJQuery()", 50);
     } else {
-        var headID = document.getElementsByTagName("head")[0];
-        var clippyCss = document.createElement("link");
-        clippyCss.rel = "stylesheet";
-        clippyCss.type = "text/css";
-        clippyCss.href = "/SPAgent/clippy.js-master/build/clippy.css";
-        clippyCss.media = "all";
-        headID.appendChild(clippyCss);
+        initClippy();
+    }
+}
 
-        SP.SOD.registerSod('clippy.js', '/SPAgent/clippy.js-master/build/clippy.min.js');
-        LoadSodByKey("clippy.js", function () {
-            clippy.load('Rocky', function (agent) {
-                clippy.myAgent = agent;
-                clippy.myAgent.show();
-            });
+function initClippy() {
+    if (typeof (clippy) == 'undefined') {
+        if (!clippyScriptOutputted) {
+            clippyScriptOutputted = true;
+            var headID = document.getElementsByTagName("head")[0];
+            var clippyCss = document.createElement("link");
+            clippyCss.rel = "stylesheet";
+            clippyCss.type = "text/css";
+            clippyCss.href = "/SPAgent/clippy.js-master/build/clippy.css";
+            clippyCss.media = "all";
+            headID.appendChild(clippyCss);
+            var clippyScript = document.createElement("script");
+            clippyScript.type = "text/javascript";
+            clippyScript.src = "/SPAgent/clippy.js-master/build/clippy.js";
+            headID.appendChild(clippyScript);
+
+        }
+        setTimeout("initClippy()", 50);
+    } else {
+        clippy.BASE_PATH = '/SPAgent/clippy.js-master/agents/';
+        clippy.load('Clippy', function (agent) {
+            clippy.myAgent = agent;
+            clippy.myAgent.show();
         });
     }
 }

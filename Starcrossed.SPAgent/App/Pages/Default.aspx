@@ -32,12 +32,12 @@
         <p id="message">
             
         </p>
-        <p>Usage:
+        <div>Usage:
             <ul>
                 <li><em>Embed:</em> uploads a JavaScript file and adds a custom action to the host web </li>
                 <li><em>Remove:</em> removes the custom action and deletes the JavaScript file from the host web</li>
             </ul>
-        </p>
+        </div>
         <input type="button" value="Embed" id="btnEmbed" />
         <input type="button" value="Remove" id="btnRemove" />
     </div>
