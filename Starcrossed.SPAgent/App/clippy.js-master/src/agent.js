@@ -56,13 +56,17 @@ clippy.Agent.prototype = {
             return;
         }
 
-        return this._playInternal('Hide', function () {
-            el.hide();
-            this.pause();
-            if (callback) callback();
-        })
+        this._addToQueue(function (complete) {
+            this._animator.showAnimation('Hide', $.proxy(function (name, state) {
+                if (state === clippy.Animator.States.EXITED) {
+                    el.hide();
+                    this.pause();
+                    if (callback) callback();
+                    complete();
+                }
+            }, this));
+        }, this);
     },
-
 
     moveTo:function (x, y, duration) {
         var dir = this._getDirection(x, y);
@@ -99,27 +103,14 @@ clippy.Agent.prototype = {
 
             }, this);
 
-            this._playInternal(anim, callback);
+            this._animator.showAnimation(anim, callback);
         }, this);
-    },
-
-    _playInternal:function (animation, callback) {
-
-        // if we're inside an idle animation,
-        if (this._isIdleAnimation() && this._idleDfd && this._idleDfd.state() === 'pending') {
-            this._idleDfd.done($.proxy(function () {
-                this._playInternal(animation, callback);
-            }, this))
-        }
-
-        this._animator.showAnimation(animation, callback);
     },
 
     play:function (animation, timeout, cb) {
         if (!this.hasAnimation(animation)) return false;
 
         if (timeout === undefined) timeout = 5000;
-
 
         this._addToQueue(function (complete) {
             var completed = false;
@@ -141,7 +132,7 @@ clippy.Agent.prototype = {
                 }, this), timeout)
             }
 
-            this._playInternal(animation, callback);
+            this._animator.showAnimation(animation, callback);
         }, this);
 
         return true;
@@ -152,7 +143,6 @@ clippy.Agent.prototype = {
      * @param {Boolean=} fast
      */
     show:function (fast) {
-
         this._hidden = false;
         if (fast) {
             this._el.show();
@@ -181,21 +171,29 @@ clippy.Agent.prototype = {
         }, this);
     },
 
+    /***
+     *
+     * @param {String} text
+     */
+    ask:function (text, choices, callback) {
+        this._addToQueue(function (complete) {
+            this._balloon.ask(complete, text, choices, callback);
+        }, this);
+    },
 
     /***
      * Close the current balloon
      */
     closeBalloon:function () {
-        this._balloon.hide();
+        this._balloon.close();
     },
 
     delay:function (time) {
         time = time || 250;
 
         this._addToQueue(function (complete) {
-            this._onQueueEmpty();
             window.setTimeout(complete, time);
-        });
+        }, this);
     },
 
     /***
@@ -211,7 +209,7 @@ clippy.Agent.prototype = {
         // clear the queue
         this._queue.clear();
         this._animator.exitAnimation();
-        this._balloon.hide();
+        this._balloon.close();
     },
 
     /***
@@ -240,7 +238,7 @@ clippy.Agent.prototype = {
         var animations = this.animations();
         var anim = animations[Math.floor(Math.random() * animations.length)];
         // skip idle animations
-        if (anim.indexOf('Idle') === 0) {
+        if (anim.indexOf('Idle') === 0 || anim == 'Show' || anim == 'Hide') {
             return this.animate();
         }
         return this.play(anim);
@@ -262,7 +260,6 @@ clippy.Agent.prototype = {
 
         var centerX = (offset.left + w / 2);
         var centerY = (offset.top + h / 2);
-
 
         var a = centerY - y;
         var b = centerX - x;
@@ -297,20 +294,21 @@ clippy.Agent.prototype = {
     _onIdleComplete:function (name, state) {
         if (state === clippy.Animator.States.EXITED) {
             this._idleDfd.resolve();
+            
+            // Always play some idle animation.
+            this._queue.next();
         }
     },
 
-
     /***
-     * Is the current animation is Idle?
+     * Is an Idle animation currently playing?
      * @return {Boolean}
      * @private
      */
     _isIdleAnimation:function () {
         var c = this._animator.currentAnimationName;
-        return c && c.indexOf('Idle') === 0;
+        return c && c.indexOf('Idle') == 0 && this._idleDfd && this._idleDfd.state() === 'pending';
     },
-
 
     /**
      * Gets a random Idle animation
@@ -390,7 +388,7 @@ clippy.Agent.prototype = {
     _startDrag:function (e) {
         // pause animations
         this.pause();
-        this._balloon.hide(true);
+        this._balloon.hide();
         this._offset = this._calculateClickOffset(e);
 
         this._moveHandle = $.proxy(this._dragMove, this);
@@ -440,6 +438,16 @@ clippy.Agent.prototype = {
 
     _addToQueue:function (func, scope) {
         if (scope) func = $.proxy(func, scope);
+        
+        // if we're inside an idle animation,
+        if (this._isIdleAnimation()) {
+            this._idleDfd.done($.proxy(function () {
+                this._queue.queue(func);
+            }, this))
+            this._animator.exitAnimation();
+            return;
+        }
+        
         this._queue.queue(func);
     },
 
