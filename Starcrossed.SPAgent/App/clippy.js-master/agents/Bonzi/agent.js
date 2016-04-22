@@ -1,4 +1,4 @@
-clippy.ready('Bonzi', {
+Starcrossed.SPAgent.Clippy.ready('Bonzi', {
     "overlayCount": 2,
     "sounds": ["1", "2", "3", "4", "5", "6", "7"],
     "framesize": [200, 160],

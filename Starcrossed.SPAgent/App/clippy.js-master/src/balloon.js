@@ -3,14 +3,14 @@
  *
  * @constructor
  */
-clippy.Balloon = function (targetEl) {
+Starcrossed.SPAgent.Clippy.Balloon = function (targetEl) {
     this._targetEl = targetEl;
 
     this._hidden = true;
     this._setup();
 };
 
-clippy.Balloon.prototype = {
+Starcrossed.SPAgent.Clippy.Balloon.prototype = {
     WORD_SPEAK_TIME:200,
     CLOSE_BALLOON_DELAY:2000,
 

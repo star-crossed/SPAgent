@@ -1,4 +1,4 @@
-clippy.ready('Rover', {
+Starcrossed.SPAgent.Clippy.ready('Rover', {
     "overlayCount": 1,
     "sounds": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
     "framesize": [80, 80],

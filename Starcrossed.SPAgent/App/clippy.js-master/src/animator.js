@@ -3,7 +3,7 @@
  *
  * @constructor
  */
-clippy.Animator = function (el, path, data, sounds) {
+Starcrossed.SPAgent.Clippy.Animator = function (el, path, data, sounds) {
     this._el = el;
     this._data = data;
     this._path = path;
@@ -29,7 +29,7 @@ clippy.Animator = function (el, path, data, sounds) {
     }
 };
 
-clippy.Animator.prototype = {
+Starcrossed.SPAgent.Clippy.Animator.prototype = {
     _setupElement:function (el) {
         var frameSize = this._data.framesize;
         el.css('display', "none");
@@ -165,10 +165,10 @@ clippy.Animator.prototype = {
         // fire events if the frames changed and we reached an end
         if (this._endCallback && frameChanged && this._atLastFrame()) {
             if (this._currentAnimation.useExitBranching && !this._exiting) {
-                this._endCallback(this.currentAnimationName, clippy.Animator.States.WAITING);
+                this._endCallback(this.currentAnimationName, Starcrossed.SPAgent.Clippy.Animator.States.WAITING);
             }
             else {
-                this._endCallback(this.currentAnimationName, clippy.Animator.States.EXITED);
+                this._endCallback(this.currentAnimationName, Starcrossed.SPAgent.Clippy.Animator.States.EXITED);
             }
         }
     },
@@ -188,4 +188,4 @@ clippy.Animator.prototype = {
     }
 };
 
-clippy.Animator.States = { WAITING:1, EXITED:0 };
+Starcrossed.SPAgent.Clippy.Animator.States = { WAITING:1, EXITED:0 };

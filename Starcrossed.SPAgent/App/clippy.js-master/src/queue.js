@@ -3,12 +3,12 @@
  *
  * @constructor
  */
-clippy.Queue = function (onEmptyCallback) {
+Starcrossed.SPAgent.Clippy.Queue = function (onEmptyCallback) {
     this._queue = [];
     this._onEmptyCallback = onEmptyCallback;
 };
 
-clippy.Queue.prototype = {
+Starcrossed.SPAgent.Clippy.Queue.prototype = {
     /***
      *
      * @param {function(Function)} func

@@ -5,23 +5,23 @@ var clippy = {};
  *
  * @constructor
  */
-clippy.Agent = function (path, data, sounds) {
+Starcrossed.SPAgent.Clippy.Agent = function (path, data, sounds) {
     this.path = path;
 
-    this._queue = new clippy.Queue($.proxy(this._onQueueEmpty, this));
+    this._queue = new Starcrossed.SPAgent.Clippy.Queue($.proxy(this._onQueueEmpty, this));
 
     this._el = $('<div class="clippy"></div>').hide();
 
     $(document.body).append(this._el);
 
-    this._animator = new clippy.Animator(this._el, path, data, sounds);
+    this._animator = new Starcrossed.SPAgent.Clippy.Animator(this._el, path, data, sounds);
 
-    this._balloon = new clippy.Balloon(this._el);
+    this._balloon = new Starcrossed.SPAgent.Clippy.Balloon(this._el);
 
     this._setupEvents();
 };
 
-clippy.Agent.prototype = {
+Starcrossed.SPAgent.Clippy.Agent.prototype = {
 
     /**************************** API ************************************/
 
@@ -58,7 +58,7 @@ clippy.Agent.prototype = {
 
         this._addToQueue(function (complete) {
             this._animator.showAnimation('Hide', $.proxy(function (name, state) {
-                if (state === clippy.Animator.States.EXITED) {
+                if (state === Starcrossed.SPAgent.Clippy.Animator.States.EXITED) {
                     el.hide();
                     this.pause();
                     if (callback) callback();
@@ -90,11 +90,11 @@ clippy.Agent.prototype = {
 
             var callback = $.proxy(function (name, state) {
                 // when exited, complete
-                if (state === clippy.Animator.States.EXITED) {
+                if (state === Starcrossed.SPAgent.Clippy.Animator.States.EXITED) {
                     complete();
                 }
                 // if waiting,
-                if (state === clippy.Animator.States.WAITING) {
+                if (state === Starcrossed.SPAgent.Clippy.Animator.States.WAITING) {
                     this._el.animate({top:y, left:x}, duration, $.proxy(function () {
                         // after we're done with the movement, do the exit animation
                         this._animator.exitAnimation();
@@ -116,7 +116,7 @@ clippy.Agent.prototype = {
             var completed = false;
             // handle callback
             var callback = function (name, state) {
-                if (state === clippy.Animator.States.EXITED) {
+                if (state === Starcrossed.SPAgent.Clippy.Animator.States.EXITED) {
                     completed = true;
                     if (cb) cb();
                     complete();
@@ -292,7 +292,7 @@ clippy.Agent.prototype = {
     },
 
     _onIdleComplete:function (name, state) {
-        if (state === clippy.Animator.States.EXITED) {
+        if (state === Starcrossed.SPAgent.Clippy.Animator.States.EXITED) {
             this._idleDfd.resolve();
             
             // Always play some idle animation.

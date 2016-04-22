@@ -1,11 +1,11 @@
-clippy.BASE_PATH = 'agents/';
+Starcrossed.SPAgent.Clippy.BASE_PATH = 'agents/';
 
-clippy.load = function (name, successCb, failCb, path) {
-    path = path || clippy.BASE_PATH + name;
+Starcrossed.SPAgent.Clippy.load = function (name, successCb, failCb, path) {
+    path = path || Starcrossed.SPAgent.Clippy.BASE_PATH + name;
 
-    var mapDfd = clippy.load._loadMap(path);
-    var agentDfd = clippy.load._loadAgent(name, path);
-    var soundsDfd = clippy.load._loadSounds(name, path);
+    var mapDfd = Starcrossed.SPAgent.Clippy.load._loadMap(path);
+    var agentDfd = Starcrossed.SPAgent.Clippy.load._loadAgent(name, path);
+    var soundsDfd = Starcrossed.SPAgent.Clippy.load._loadSounds(name, path);
 
     var data;
     agentDfd.done(function (d) {
@@ -20,20 +20,20 @@ clippy.load = function (name, successCb, failCb, path) {
 
     // wrapper to the success callback
     var cb = function () {
-        var a = new clippy.Agent(path, data,sounds);
+        var a = new Starcrossed.SPAgent.Clippy.Agent(path, data,sounds);
         successCb(a);
     };
 
     $.when(mapDfd, agentDfd, soundsDfd).done(cb).fail(failCb);
 };
 
-clippy.load._maps = {};
-clippy.load._loadMap = function (path) {
-    var dfd = clippy.load._maps[path];
+Starcrossed.SPAgent.Clippy.load._maps = {};
+Starcrossed.SPAgent.Clippy.load._loadMap = function (path) {
+    var dfd = Starcrossed.SPAgent.Clippy.load._maps[path];
     if (dfd) return dfd;
 
     // set dfd if not defined
-    dfd = clippy.load._maps[path] = $.Deferred();
+    dfd = Starcrossed.SPAgent.Clippy.load._maps[path] = $.Deferred();
 
     var src = path + '/map.png';
     var img = new Image();
@@ -47,14 +47,14 @@ clippy.load._loadMap = function (path) {
     return dfd.promise();
 };
 
-clippy.load._sounds = {};
+Starcrossed.SPAgent.Clippy.load._sounds = {};
 
-clippy.load._loadSounds = function (name, path) {
-    var dfd = clippy.load._sounds[name];
+Starcrossed.SPAgent.Clippy.load._loadSounds = function (name, path) {
+    var dfd = Starcrossed.SPAgent.Clippy.load._sounds[name];
     if (dfd) return dfd;
 
     // set dfd if not defined
-    dfd = clippy.load._sounds[name] = $.Deferred();
+    dfd = Starcrossed.SPAgent.Clippy.load._sounds[name] = $.Deferred();
 
     var audio = document.createElement('audio');
     var canPlayMp3 = !!audio.canPlayType && "" != audio.canPlayType('audio/mpeg');
@@ -65,27 +65,27 @@ clippy.load._loadSounds = function (name, path) {
     } else {
         var src = path + (canPlayMp3 ? '/sounds-mp3.js' : '/sounds-ogg.js');
         // load
-        clippy.load._loadScript(src);
+        Starcrossed.SPAgent.Clippy.load._loadScript(src);
     }
 
     return dfd.promise()
 };
 
-clippy.load._data = {};
-clippy.load._loadAgent = function (name, path) {
-    var dfd = clippy.load._data[name];
+Starcrossed.SPAgent.Clippy.load._data = {};
+Starcrossed.SPAgent.Clippy.load._loadAgent = function (name, path) {
+    var dfd = Starcrossed.SPAgent.Clippy.load._data[name];
     if (dfd) return dfd;
 
-    dfd = clippy.load._getAgentDfd(name);
+    dfd = Starcrossed.SPAgent.Clippy.load._getAgentDfd(name);
 
     var src = path + '/agent.js';
 
-    clippy.load._loadScript(src);
+    Starcrossed.SPAgent.Clippy.load._loadScript(src);
 
     return dfd.promise();
 };
 
-clippy.load._loadScript = function (src) {
+Starcrossed.SPAgent.Clippy.load._loadScript = function (src) {
     var script = document.createElement('script');
     script.setAttribute('src', src);
     script.setAttribute('async', 'async');
@@ -95,23 +95,23 @@ clippy.load._loadScript = function (src) {
     dochead.appendChild(script);
 };
 
-clippy.load._getAgentDfd = function (name) {
-    var dfd = clippy.load._data[name];
+Starcrossed.SPAgent.Clippy.load._getAgentDfd = function (name) {
+    var dfd = Starcrossed.SPAgent.Clippy.load._data[name];
     if (!dfd) {
-        dfd = clippy.load._data[name] = $.Deferred();
+        dfd = Starcrossed.SPAgent.Clippy.load._data[name] = $.Deferred();
     }
     return dfd;
 };
 
-clippy.ready = function (name, data) {
-    var dfd = clippy.load._getAgentDfd(name);
+Starcrossed.SPAgent.Clippy.ready = function (name, data) {
+    var dfd = Starcrossed.SPAgent.Clippy.load._getAgentDfd(name);
     dfd.resolve(data);
 };
 
-clippy.soundsReady = function (name, data) {
-    var dfd = clippy.load._sounds[name];
+Starcrossed.SPAgent.Clippy.soundsReady = function (name, data) {
+    var dfd = Starcrossed.SPAgent.Clippy.load._sounds[name];
     if (!dfd) {
-        dfd = clippy.load._sounds[name] = $.Deferred();
+        dfd = Starcrossed.SPAgent.Clippy.load._sounds[name] = $.Deferred();
     }
 
     dfd.resolve(data);

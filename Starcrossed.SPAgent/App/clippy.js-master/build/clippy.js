@@ -1,7 +1,7 @@
 Type.registerNamespace("Starcrossed");
 Starcrossed.SPAgent = Starcrossed.SPAgent || {};
 Starcrossed.SPAgent.Clippy = Starcrossed.SPAgent.Clippy || {};
-var clippy = Starcrossed.SPAgent.Clippy; //{};
+//var clippy = {};
 
 
 /******
@@ -9,23 +9,23 @@ var clippy = Starcrossed.SPAgent.Clippy; //{};
  *
  * @constructor
  */
-clippy.Agent = function (path, data, sounds) {
+Starcrossed.SPAgent.Clippy.Agent = function (path, data, sounds) {
     this.path = path;
 
-    this._queue = new clippy.Queue($.proxy(this._onQueueEmpty, this));
+    this._queue = new Starcrossed.SPAgent.Clippy.Queue($.proxy(this._onQueueEmpty, this));
 
     this._el = $('<div class="clippy"></div>').hide();
 
     $(document.body).append(this._el);
 
-    this._animator = new clippy.Animator(this._el, path, data, sounds);
+    this._animator = new Starcrossed.SPAgent.Clippy.Animator(this._el, path, data, sounds);
 
-    this._balloon = new clippy.Balloon(this._el);
+    this._balloon = new Starcrossed.SPAgent.Clippy.Balloon(this._el);
 
     this._setupEvents();
 };
 
-clippy.Agent.prototype = {
+Starcrossed.SPAgent.Clippy.Agent.prototype = {
 
     /**************************** API ************************************/
 
@@ -62,7 +62,7 @@ clippy.Agent.prototype = {
 
         this._addToQueue(function (complete) {
             this._animator.showAnimation('Hide', $.proxy(function (name, state) {
-                if (state === clippy.Animator.States.EXITED) {
+                if (state === Starcrossed.SPAgent.Clippy.Animator.States.EXITED) {
                     el.hide();
                     this.pause();
                     if (callback) callback();
@@ -94,11 +94,11 @@ clippy.Agent.prototype = {
 
             var callback = $.proxy(function (name, state) {
                 // when exited, complete
-                if (state === clippy.Animator.States.EXITED) {
+                if (state === Starcrossed.SPAgent.Clippy.Animator.States.EXITED) {
                     complete();
                 }
                 // if waiting,
-                if (state === clippy.Animator.States.WAITING) {
+                if (state === Starcrossed.SPAgent.Clippy.Animator.States.WAITING) {
                     this._el.animate({top:y, left:x}, duration, $.proxy(function () {
                         // after we're done with the movement, do the exit animation
                         this._animator.exitAnimation();
@@ -120,7 +120,7 @@ clippy.Agent.prototype = {
             var completed = false;
             // handle callback
             var callback = function (name, state) {
-                if (state === clippy.Animator.States.EXITED) {
+                if (state === Starcrossed.SPAgent.Clippy.Animator.States.EXITED) {
                     completed = true;
                     if (cb) cb();
                     complete();
@@ -296,7 +296,7 @@ clippy.Agent.prototype = {
     },
 
     _onIdleComplete:function (name, state) {
-        if (state === clippy.Animator.States.EXITED) {
+        if (state === Starcrossed.SPAgent.Clippy.Animator.States.EXITED) {
             this._idleDfd.resolve();
             
             // Always play some idle animation.
@@ -475,7 +475,7 @@ clippy.Agent.prototype = {
  *
  * @constructor
  */
-clippy.Animator = function (el, path, data, sounds) {
+Starcrossed.SPAgent.Clippy.Animator = function (el, path, data, sounds) {
     this._el = el;
     this._data = data;
     this._path = path;
@@ -501,7 +501,7 @@ clippy.Animator = function (el, path, data, sounds) {
     }
 };
 
-clippy.Animator.prototype = {
+Starcrossed.SPAgent.Clippy.Animator.prototype = {
     _setupElement:function (el) {
         var frameSize = this._data.framesize;
         el.css('display', "none");
@@ -637,10 +637,10 @@ clippy.Animator.prototype = {
         // fire events if the frames changed and we reached an end
         if (this._endCallback && frameChanged && this._atLastFrame()) {
             if (this._currentAnimation.useExitBranching && !this._exiting) {
-                this._endCallback(this.currentAnimationName, clippy.Animator.States.WAITING);
+                this._endCallback(this.currentAnimationName, Starcrossed.SPAgent.Clippy.Animator.States.WAITING);
             }
             else {
-                this._endCallback(this.currentAnimationName, clippy.Animator.States.EXITED);
+                this._endCallback(this.currentAnimationName, Starcrossed.SPAgent.Clippy.Animator.States.EXITED);
             }
         }
     },
@@ -660,21 +660,21 @@ clippy.Animator.prototype = {
     }
 };
 
-clippy.Animator.States = { WAITING:1, EXITED:0 };
+Starcrossed.SPAgent.Clippy.Animator.States = { WAITING:1, EXITED:0 };
 
 /******
  *
  *
  * @constructor
  */
-clippy.Balloon = function (targetEl) {
+Starcrossed.SPAgent.Clippy.Balloon = function (targetEl) {
     this._targetEl = targetEl;
 
     this._hidden = true;
     this._setup();
 };
 
-clippy.Balloon.prototype = {
+Starcrossed.SPAgent.Clippy.Balloon.prototype = {
     WORD_SPEAK_TIME:200,
     CLOSE_BALLOON_DELAY:2000,
 
@@ -902,14 +902,14 @@ clippy.Balloon.prototype = {
 };
 
 
-clippy.BASE_PATH = 'agents/';
+Starcrossed.SPAgent.Clippy.BASE_PATH = 'agents/';
 
-clippy.load = function (name, successCb, failCb, path) {
-    path = path || clippy.BASE_PATH + name;
+Starcrossed.SPAgent.Clippy.load = function (name, successCb, failCb, path) {
+    path = path || Starcrossed.SPAgent.Clippy.BASE_PATH + name;
 
-    var mapDfd = clippy.load._loadMap(path);
-    var agentDfd = clippy.load._loadAgent(name, path);
-    var soundsDfd = clippy.load._loadSounds(name, path);
+    var mapDfd = Starcrossed.SPAgent.Clippy.load._loadMap(path);
+    var agentDfd = Starcrossed.SPAgent.Clippy.load._loadAgent(name, path);
+    var soundsDfd = Starcrossed.SPAgent.Clippy.load._loadSounds(name, path);
 
     var data;
     agentDfd.done(function (d) {
@@ -924,20 +924,20 @@ clippy.load = function (name, successCb, failCb, path) {
 
     // wrapper to the success callback
     var cb = function () {
-        var a = new clippy.Agent(path, data,sounds);
+        var a = new Starcrossed.SPAgent.Clippy.Agent(path, data,sounds);
         successCb(a);
     };
 
     $.when(mapDfd, agentDfd, soundsDfd).done(cb).fail(failCb);
 };
 
-clippy.load._maps = {};
-clippy.load._loadMap = function (path) {
-    var dfd = clippy.load._maps[path];
+Starcrossed.SPAgent.Clippy.load._maps = {};
+Starcrossed.SPAgent.Clippy.load._loadMap = function (path) {
+    var dfd = Starcrossed.SPAgent.Clippy.load._maps[path];
     if (dfd) return dfd;
 
     // set dfd if not defined
-    dfd = clippy.load._maps[path] = $.Deferred();
+    dfd = Starcrossed.SPAgent.Clippy.load._maps[path] = $.Deferred();
 
     var src = path + '/map.png';
     var img = new Image();
@@ -951,14 +951,14 @@ clippy.load._loadMap = function (path) {
     return dfd.promise();
 };
 
-clippy.load._sounds = {};
+Starcrossed.SPAgent.Clippy.load._sounds = {};
 
-clippy.load._loadSounds = function (name, path) {
-    var dfd = clippy.load._sounds[name];
+Starcrossed.SPAgent.Clippy.load._loadSounds = function (name, path) {
+    var dfd = Starcrossed.SPAgent.Clippy.load._sounds[name];
     if (dfd) return dfd;
 
     // set dfd if not defined
-    dfd = clippy.load._sounds[name] = $.Deferred();
+    dfd = Starcrossed.SPAgent.Clippy.load._sounds[name] = $.Deferred();
 
     var audio = document.createElement('audio');
     var canPlayMp3 = !!audio.canPlayType && "" != audio.canPlayType('audio/mpeg');
@@ -969,27 +969,27 @@ clippy.load._loadSounds = function (name, path) {
     } else {
         var src = path + (canPlayMp3 ? '/sounds-mp3.js' : '/sounds-ogg.js');
         // load
-        clippy.load._loadScript(src);
+        Starcrossed.SPAgent.Clippy.load._loadScript(src);
     }
 
     return dfd.promise()
 };
 
-clippy.load._data = {};
-clippy.load._loadAgent = function (name, path) {
-    var dfd = clippy.load._data[name];
+Starcrossed.SPAgent.Clippy.load._data = {};
+Starcrossed.SPAgent.Clippy.load._loadAgent = function (name, path) {
+    var dfd = Starcrossed.SPAgent.Clippy.load._data[name];
     if (dfd) return dfd;
 
-    dfd = clippy.load._getAgentDfd(name);
+    dfd = Starcrossed.SPAgent.Clippy.load._getAgentDfd(name);
 
     var src = path + '/agent.js';
 
-    clippy.load._loadScript(src);
+    Starcrossed.SPAgent.Clippy.load._loadScript(src);
 
     return dfd.promise();
 };
 
-clippy.load._loadScript = function (src) {
+Starcrossed.SPAgent.Clippy.load._loadScript = function (src) {
     var script = document.createElement('script');
     script.setAttribute('src', src);
     script.setAttribute('async', 'async');
@@ -999,23 +999,23 @@ clippy.load._loadScript = function (src) {
     dochead.appendChild(script);
 };
 
-clippy.load._getAgentDfd = function (name) {
-    var dfd = clippy.load._data[name];
+Starcrossed.SPAgent.Clippy.load._getAgentDfd = function (name) {
+    var dfd = Starcrossed.SPAgent.Clippy.load._data[name];
     if (!dfd) {
-        dfd = clippy.load._data[name] = $.Deferred();
+        dfd = Starcrossed.SPAgent.Clippy.load._data[name] = $.Deferred();
     }
     return dfd;
 };
 
-clippy.ready = function (name, data) {
-    var dfd = clippy.load._getAgentDfd(name);
+Starcrossed.SPAgent.Clippy.ready = function (name, data) {
+    var dfd = Starcrossed.SPAgent.Clippy.load._getAgentDfd(name);
     dfd.resolve(data);
 };
 
-clippy.soundsReady = function (name, data) {
-    var dfd = clippy.load._sounds[name];
+Starcrossed.SPAgent.Clippy.soundsReady = function (name, data) {
+    var dfd = Starcrossed.SPAgent.Clippy.load._sounds[name];
     if (!dfd) {
-        dfd = clippy.load._sounds[name] = $.Deferred();
+        dfd = Starcrossed.SPAgent.Clippy.load._sounds[name] = $.Deferred();
     }
 
     dfd.resolve(data);
@@ -1026,12 +1026,12 @@ clippy.soundsReady = function (name, data) {
  *
  * @constructor
  */
-clippy.Queue = function (onEmptyCallback) {
+Starcrossed.SPAgent.Clippy.Queue = function (onEmptyCallback) {
     this._queue = [];
     this._onEmptyCallback = onEmptyCallback;
 };
 
-clippy.Queue.prototype = {
+Starcrossed.SPAgent.Clippy.Queue.prototype = {
     /***
      *
      * @param {function(Function)} func
