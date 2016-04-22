@@ -1,4 +1,8 @@
-var clippy = {};
+Type.registerNamespace("Starcrossed");
+Starcrossed.SPAgent = Starcrossed.SPAgent || {};
+Starcrossed.SPAgent.Clippy = Starcrossed.SPAgent.Clippy || {};
+var clippy = Starcrossed.SPAgent.Clippy; //{};
+
 
 /******
  *
